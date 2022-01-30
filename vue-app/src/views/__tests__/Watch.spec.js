@@ -8,11 +8,16 @@ describe("WatchPage.vue", () => {
         const localVue = createLocalVue()
         localVue.use(router)
         wrapper = shallowMount(Watch, {
-            router
+            router,
         })
     })
     test("should component exists", () => {
         expect(wrapper.exists()).toBeTruthy()
+    })
+
+    test("should render video h1", () => {
+        const title = wrapper.find("h1")
+        expect(title.exists()).toBeTruthy()
     })
 
 })

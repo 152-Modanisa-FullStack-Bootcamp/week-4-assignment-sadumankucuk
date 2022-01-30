@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ this.$route.query.slug }}</h1>
+  <h1>Video Id : {{ this.$route.query.id }}</h1>
 </template>
 
 <script>

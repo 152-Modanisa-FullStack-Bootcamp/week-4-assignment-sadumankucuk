@@ -21,7 +21,7 @@ describe("VideoListItem.vue", () => {
         })
 
         test("should render video title", () => {
-            const title = wrapper.find("#video-title")
+            const title = wrapper.find(".video-title")
             expect(title.exists()).toBeTruthy()
         })
 
@@ -31,7 +31,7 @@ describe("VideoListItem.vue", () => {
         })
 
         test("should render owner name title", () => {
-            const summary = wrapper.find("#video-subTitle")
+            const summary = wrapper.find(".video-subTitle")
             expect(summary.exists()).toBeTruthy()
         })
     })
@@ -49,17 +49,27 @@ describe("VideoListItem.vue", () => {
             ownerName: "freeCodeCamp.org",
             description: "Learn Vue 3 by in this full course. Vue.js is an open-source model–view–view model front end JavaScript framework for building user interfaces and single-page applications.",
         }
+        let wrapper
+        beforeEach(() => {
 
-        test("should change when the video image is hovered", async () => {
-            const wrapper = shallowMount(VideoListItem, {
+            wrapper = shallowMount(VideoListItem, {
                 propsData: {
                     video,
-                    hover: true
+                    hover : false,
                 }
             })
+        })
+
+        test("should change when the video image is hovered", async () => {
             const img = wrapper.find("#video-image")
             await img.trigger("mouseover")
             expect(img.attributes().src).toEqual(video.hoverImage)
+        })
+
+        test("should change when the video image is mouse leave", async () => {
+            const img = wrapper.find("#video-image")
+            await img.trigger("mouseleave")
+            expect(img.attributes().src).toEqual(video.coverImage)
         })
 
     })

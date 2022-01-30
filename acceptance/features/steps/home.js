@@ -41,16 +41,16 @@ Given(/^that User is on Video Site Project's HomePage$/, async function () {
 
 When(/^User clicks "([^"]*)" video$/, async function (videoTitle) {
     const selector = '.card-container'
-    this.videoSlug = await this.page.$$eval(
+    this.videoId = await this.page.$$eval(
         selector,
         async (items, videoTitle) => {
             const video = items
                 .find(item => item.querySelector(".video-title").textContent === videoTitle)
             const img = video.querySelector("#video-image")
-            const {slug} = video.dataset
+            const {id} = video.dataset
             console.log(video.dataset)
             await img.click()
-            return slug
+            return id
         },
         videoTitle
     )
@@ -60,7 +60,7 @@ Then(/^User should see watch url correctly$/, async function () {
     await this.page.waitForNavigation({waitUntil:"load"}).catch(error => {
         // handler code here
     });
-    await checkUrlContains.call(this, false, `/watch?slug=${this.videoSlug}`)
+    await checkUrlContains.call(this, false, `/watch?id=${this.videoId}`)
 });
 
 When(/^User hovers "([^"]*)" video$/, async function (videoTitle) {

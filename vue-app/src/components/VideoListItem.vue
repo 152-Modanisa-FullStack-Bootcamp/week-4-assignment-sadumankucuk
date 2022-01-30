@@ -4,7 +4,7 @@
         id="video-image"
         :alt="video.title"
         :src="changeHoverImage()"
-        @click="navigateToWatchPage(video.slug)"
+        @click="navigateToWatchPage(video.id)"
         @mouseleave="hover = false"
         @mouseover="hover = true"
     >
@@ -52,11 +52,12 @@ export default {
   },
   methods: {
     //Routing using the router name property (query)
-    navigateToWatchPage(videoSlug) {
-      this.$router.push({name: "watch", query: {slug: videoSlug}});
+    navigateToWatchPage(videoId) {
+      this.$router.push({name: "watch", query: {id: videoId}});
     },
 
     changeHoverImage() {
+      console.log("burada", this.hover)
       return this.hover ? this.video.hoverImage : this.video.coverImage
     }
 

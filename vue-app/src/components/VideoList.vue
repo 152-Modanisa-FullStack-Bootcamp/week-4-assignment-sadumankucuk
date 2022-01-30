@@ -4,7 +4,7 @@
         v-for="video in videos"
         :key="video.id"
         :video="video"
-        :data-slug="video.slug"
+        :data-id="video.id"
     />
   </div>
 </template>
@@ -24,7 +24,6 @@ export default {
   async created() {
     try {
       this.videos = await API.getVideoList()
-      this.videos =  this.videos.map(video => ({ ...video, slug: 'vue-js-crash-course' }))
     } catch (e) {
       console.error(e)
     }
