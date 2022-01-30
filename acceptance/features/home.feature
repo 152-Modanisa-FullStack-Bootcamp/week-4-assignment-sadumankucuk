@@ -7,7 +7,7 @@ Feature: Video Site Project
     Then User can see some of videos' title like
       | Vue.js Course for Beginners [2021 Tutorial] |
       | Vue JS Crash Course                         |
-      | Vue 3 - What's New? What Changed?           |
+      | ue 3 - What's New? What Changed?            |
 
   Scenario: User should navigate to watch page on click to video
     Given that User is on Video Site Project's HomePage

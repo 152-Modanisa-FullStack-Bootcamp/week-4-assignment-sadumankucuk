@@ -24,7 +24,7 @@ Then(/^User can see some of videos' title like$/, async function (arr) {
             selector,
             async (items, videoTitle) => {
                 const video = items
-                    .find(item => item.querySelector(".video-title").textContent === videoTitle)
+                    .find(item => item.querySelector(".video-title").textContent.includes(videoTitle))
                 return !!video
             },
             videoTitle
